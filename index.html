@@ -8,6 +8,8 @@
     body {
       font-family: Arial, sans-serif;
       margin: 20px;
+      font-size: 1rem;
+      padding: 2%;
     }
 
     h1 {
@@ -43,6 +45,8 @@
       flex: 1;
       padding: 6px;
       box-sizing: border-box;
+      width: 100%;
+      max-width: 100%;
     }
 
     .campo textarea {
@@ -81,6 +85,8 @@
       padding: 15px;
       white-space: pre-wrap;
       min-height: 300px;
+      width: 100%;
+    max-width: 100%;
     }
 
     .result-section {
@@ -95,6 +101,8 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
+      width: 100%;
+      max-width: 300px;
     }
 
     button:hover {
@@ -125,7 +133,7 @@
       bottom: 50px;
     }
 
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 480px) {
       .contenedor {
         flex-direction: column;
       }
@@ -138,10 +146,19 @@
       .campo label {
         width: 100%;
         margin-bottom: 5px;
+        font-size: 0.9rem;
       }
 
       .autocomplete-list {
         left: 0 !important;
+      }
+      h1 {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+      button {
+        font-size: 0.9rem;
+        padding: 10px;
       }
     }
   </style>
