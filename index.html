@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <title>Plantilla Cierre de Incidentes v1.0 web</title>
@@ -18,16 +19,19 @@
 
     .contenedor {
       display: flex;
+      flex-wrap: wrap;
       gap: 40px;
       align-items: flex-start;
     }
 
     form {
       flex: 1;
+      min-width: 300px;
     }
 
     .campo {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       margin-bottom: 12px;
       position: relative;
@@ -35,6 +39,7 @@
 
     .campo label {
       width: 250px;
+      min-width: 200px;
       font-weight: bold;
       margin-right: 10px;
     }
@@ -47,6 +52,7 @@
       box-sizing: border-box;
       width: 100%;
       max-width: 100%;
+      min-width: 100px;
     }
 
     .campo textarea {
@@ -86,11 +92,13 @@
       white-space: pre-wrap;
       min-height: 300px;
       width: 100%;
-    max-width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
     }
 
     .result-section {
       flex: 1;
+      min-width: 300px;
     }
 
     button {
@@ -133,7 +141,7 @@
       bottom: 50px;
     }
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 960px) {
       .contenedor {
         flex-direction: column;
       }
@@ -146,23 +154,21 @@
       .campo label {
         width: 100%;
         margin-bottom: 5px;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
       }
 
       .autocomplete-list {
         left: 0 !important;
       }
-      h1 {
-        font-size: 1.2rem;
-        text-align: center;
-      }
-      button {
-        font-size: 0.9rem;
-        padding: 10px;
+
+      #external_ticket {
+        min-width: 100% !important;
       }
     }
   </style>
+
 </head>
+
 <body>
   <h1>PLANTILLA CIERRE DE INCIDENTES</h1>
 
@@ -178,15 +184,22 @@
             <option value="Cotizador Salud">Cotizador Salud</option>
             <option value="Cotizador Autos">Cotizador Autos</option>
             <option value="Cotizador PCP">Cotizador PCP</option>
+            <option value="Cotizador Accidente Personal">Cotizador Accidente Personal</option>
+            <option value="ICargo">ICargo</option>
+            <option value="Cotizador GWT">Cotizador GWT</option>
+            <option value="Home Cotizador">Home Cotizador</option>
+            <option value="Mis Negocios">Mis Negocios</option>
             <option value="Cotizador Educacion">Cotizador Educacion</option>
             <option value="Cotizador Pension">Cotizador Pension</option>
             <option value="Cotizador Mas Vida">Cotizador Mas Vida</option>
             <option value="Cotizador Ingreso Digital Vida Grupo">Cotizador Ingreso Digital Vida Grupo</option>
             <option value="Cotizador Saldado">Cotizador Saldado</option>
             <option value="Cotizador Vida Grupo PES">Cotizador Vida Grupo PES</option>
+            <option value="PorChat">PorChat</option>
             <option value="AVA">AVA</option>
             <option value="AUS">AUS</option>
-            <option value="SimonNet">SimonNet</option>
+            <option value="SimonNet / Gestion Documental">SimonNet</option>
+            <option value="Reportes Dynatrace">Reportes Dynatrace</option>
           </select>
         </div>
 
@@ -197,11 +210,12 @@
             <option value="Nuevo">Nuevo</option>
             <option value="Cotizar">Cotizar</option>
             <option value="Expedir">Expedir</option>
-            <option value="Modificacion">Modificacion</option>
-            <option value="Renovacion">Renovacion</option>
+            <option value="Modificar">Modificacion</option>
+            <option value="Renovar">Renovacion</option>
             <option value="Documentos">Documentos</option>
             <option value="Requisitos">Requisitos</option>
             <option value="Gestion">Gestion</option>
+            <option value="Alertamiento">Alertamiento</option>
           </select>
         </div>
       </div>
@@ -216,29 +230,42 @@
         <label for="causa_error">Causa del Error:</label>
         <select id="causa_error" required>
           <option value="">-- Seleccione --</option>
-          <option value="1. Capacitación - Tiene la opción pero no sabe cómo hacerlo">1. Capacitación - Tiene la opción pero no sabe cómo hacerlo</option>
-          <option value="2. Capacitación - Desconoce el proceso de Negocio">2. Capacitación - Desconoce el proceso de Negocio</option>
-          <option value="3. Capacitación - Desconoce el uso del aplicativo">3. Capacitación - Desconoce el uso del aplicativo</option>
-          <option value="4. Mejoras - Redefinición de Políticas y/o Procesos de negocio">4. Mejoras - Redefinición de Políticas y/o Procesos de negocio</option>
-          <option value="5. Mejoras - Se requiere una nueva funcionalidad (El negocio no tiene como ejecutar la operación)">5. Mejoras - Se requiere una nueva funcionalidad (El negocio no tiene como ejecutar la operación)</option>
+          <option value="1. Capacitación - Tiene la opción pero no sabe cómo hacerlo">1. Capacitación - Tiene la opción
+            pero no sabe cómo hacerlo</option>
+          <option value="2. Capacitación - Desconoce el proceso de Negocio">2. Capacitación - Desconoce el proceso de
+            Negocio</option>
+          <option value="3. Capacitación - Desconoce el uso del aplicativo">3. Capacitación - Desconoce el uso del
+            aplicativo</option>
+          <option value="4. Mejoras - Redefinición de Políticas y/o Procesos de negocio">4. Mejoras - Redefinición de
+            Políticas y/o Procesos de negocio</option>
+          <option
+            value="5. Mejoras - Se requiere una nueva funcionalidad (El negocio no tiene como ejecutar la operación)">5.
+            Mejoras - Se requiere una nueva funcionalidad (El negocio no tiene como ejecutar la operación)</option>
           <option value="6. Errores de la aplicación">6. Errores de la aplicación</option>
-          <option value="7. Perfilacion / Accesos - El usuario no cuenta con los permisos">7. Perfilacion / Accesos - El usuario no cuenta con los permisos</option>
+          <option value="7. Perfilacion / Accesos - El usuario no cuenta con los permisos">7. Perfilacion / Accesos - El
+            usuario no cuenta con los permisos</option>
           <option value="8. Degradación de Servicios">8. Degradación de Servicios</option>
           <option value="9. Datos errados">9. Datos errados</option>
-          <option value="10. Solucionado sin acciones - Fue un error Momentaneo">10. Solucionado sin acciones - Fue un error Momentaneo</option>
-          <option value="11. Modificacion Dato - Se modifica un Valor el cual era incorrecto">11. Modificacion Dato - Se modifica un Valor el cual era incorrecto</option>
-          <option value="12. Modificacion De Codigo - Se Modifica Algo del codigo">12. Modificacion De Codigo - Se Modifica Algo del codigo</option>
+          <option value="10. Solucionado sin acciones - Fue un error Momentaneo">10. Solucionado sin acciones - Fue un
+            error Momentaneo</option>
+          <option value="11. Modificacion Dato - Se modifica un Valor el cual era incorrecto">11. Modificacion Dato - Se
+            modifica un Valor el cual era incorrecto</option>
+          <option value="12. Modificacion De Codigo - Se Modifica Algo del codigo">12. Modificacion De Codigo - Se
+            Modifica Algo del codigo</option>
           <option value="13. Usuario desincronizado">13. Usuario desincronizado</option>
-          <option value="14. No detectada (Usuario ya no tiene póliza para confirmar)">14. No detectada (Usuario ya no tiene póliza para confirmar)</option>
+          <option value="14. No detectada (Usuario ya no tiene póliza para confirmar)">14. No detectada (Usuario ya no
+            tiene póliza para confirmar)</option>
           <option value="15. Error masivo en salud">15. Error masivo en salud</option>
           <option value="16. Actualización APP">16. Actualización APP</option>
           <option value="17. Intermitencia servicio externo">17. Intermitencia servicio externo</option>
           <option value="18. Error de autenticación SEUS - salud">18. Error de autenticación SEUS - salud</option>
           <option value="19. Error del dispositivo">19. Error del dispositivo</option>
           <option value="20. Problema externo a la aplicación">20. Problema externo a la aplicación</option>
-          <option value="21. No detectada (Solucion por parte del usuario)">21. No detectada (Solucion por parte del usuario)</option>
+          <option value="21. No detectada (Solucion por parte del usuario)">21. No detectada (Solucion por parte del
+            usuario)</option>
           <option value="22. Cruce de ambientes">22. Cruce de ambientes</option>
-          <option value="23. El cotizador no cargó las resouestas de las preguntas de Declaración Asegurabilidad">23. El cotizador no cargó las resouestas de las preguntas de Declaración Asegurabilidad</option>
+          <option value="23. El cotizador no cargó las resouestas de las preguntas de Declaración Asegurabilidad">23. El
+            cotizador no cargó las resouestas de las preguntas de Declaración Asegurabilidad</option>
           <option value="24. Incidente repetido">24. Incidente repetido</option>
         </select>
       </div>
@@ -309,8 +336,9 @@
           <option value="65. Solicitud Autos">65. Solicitud Autos</option>
           <option value="66. Incidente duplicado">66. Incidente duplicado</option>
         </select>
-      </div>      
-      <div class="campo"><label for="hu_raizal">HU Raizal / Mejora:</label><input type="text" id="hu_raizal" placeholder="HU-XXXXX" /></div>
+      </div>
+      <div class="campo"><label for="hu_raizal">HU Raizal / Mejora:</label><input type="text" id="hu_raizal"
+          placeholder="HU-XXXXX" /></div>
       <div class="campo">
         <label for="estado_raizal">Estado Raizal:</label>
         <select id="estado_raizal" required>
@@ -322,7 +350,7 @@
           <option value="5. Finalizada">5. Finalizada</option>
           <option value="6. N/A">6. N/A</option>
         </select>
-      </div>      
+      </div>
       <div class="campo">
         <label for="responsable_solucion">Responsable Solución:</label>
         <select id="responsable_solucion" required>
@@ -331,7 +359,7 @@
           <option value="2. Negocio">2. Negocio</option>
           <option value="3. TI/Negocio">3. TI/Negocio</option>
         </select>
-      </div>      
+      </div>
       <div class="campo"><label for="diagnostico">Diagnóstico:</label><input type="text" id="diagnostico" /></div>
       <div class="campo">
         <label for="accion_ejecutada">Acción Ejecutada:</label>
@@ -341,7 +369,7 @@
         <label for="descripcion_solucion">Descripción de Solución:</label>
         <textarea id="descripcion_solucion" style="height: 60px;"></textarea>
       </div>
-      
+
 
       <div class="campo">
         <label for="confirmacion_usuario">¿Confirmar operatividad del usuario afectado?:</label>
@@ -351,7 +379,8 @@
         </select>
       </div>
 
-      <div class="campo"><label for="formulario_credenciales">ID Formulario de Solicitud de Credenciales:</label><input type="text" id="formulario_credenciales" /></div>
+      <div class="campo"><label for="formulario_credenciales">ID Formulario de Solicitud de Credenciales:</label><input
+          type="text" id="formulario_credenciales" /></div>
       <div class="campo"><label for="oc_pam">OC Acceso a PAM - (PAM):</label><input type="text" id="oc_pam" /></div>
       <div class="campo">
         <label for="causa_raiz">Causa Raíz (Identificada / Sin Identificar):</label>
@@ -360,7 +389,7 @@
           <option value="Identificada">Identificada</option>
           <option value="Sin Identificar">Sin Identificar</option>
         </select>
-      </div> 
+      </div>
       <div style="display: flex; gap: 10px;">
         <button type="button" onclick="generarTexto()">Generar Texto</button>
         <button type="button" onclick="limpiarCampos()">🧹 Limpiar</button>
@@ -373,7 +402,8 @@
 
       <div class="campo" style="margin-bottom: 10px; display: flex; align-items: center;">
         <label for="external_ticket">External Ticket:</label>
-        <input type="text" id="external_ticket" readonly style="background-color:#eee; flex: 2; margin-right: 10px; min-width: 400px;">
+        <input type="text" id="external_ticket" readonly
+          style="background-color:#eee; flex: 2; margin-right: 10px; min-width: 400px;">
         <button type="button" onclick="copiarTicket()">📋</button>
       </div>
 
@@ -407,7 +437,9 @@
       "26. Viajes FV - Poliza Pendiente de Expedir",
       "30. Arrendamiento FV Envio de Comunicados CCM",
       "32. Descuento de Ley SOAT",
-      "33. Error en la tarifa"
+      "33. Error en la tarifa",
+      "34. Alerta aplicativos",
+
     ];
 
     const inputAgrupador = document.getElementById("agrupador_error");
@@ -503,43 +535,43 @@
       document.getElementById("resultado").textContent = texto;
     }
 
-        function actualizarExternalTicket() {
-            const aplicativo = getValue("aplicativo_afectado");
-            const proceso = getValue("proceso_aplicativo");
-            const agrupador = getValue("agrupador_error");
+    function actualizarExternalTicket() {
+      const aplicativo = getValue("aplicativo_afectado");
+      const proceso = getValue("proceso_aplicativo");
+      const agrupador = getValue("agrupador_error");
 
-            const externo = [
-              aplicativo ? aplicativo + "." : "",
-              proceso ? proceso + " " : "",
-              agrupador
-            ].join("").trim();
+      const externo = [
+        aplicativo ? aplicativo + "." : "",
+        proceso ? proceso + " " : "",
+        agrupador
+      ].join("").trim();
 
-            document.getElementById("external_ticket").value = externo;
-        }
+      document.getElementById("external_ticket").value = externo;
+    }
 
-        function getValue(id) {
-          return document.getElementById(id).value || "";
-        }
+    function getValue(id) {
+      return document.getElementById(id).value || "";
+    }
 
-        function copiarAlPortapapeles() {
-          const texto = document.getElementById("resultado").textContent;
-          navigator.clipboard.writeText(texto).then(() => {
-            alert("Texto copiado al portapapeles 📋");
-          }).catch(err => {
-            alert("Error al copiar: " + err);
-          });
-        }
+    function copiarAlPortapapeles() {
+      const texto = document.getElementById("resultado").textContent;
+      navigator.clipboard.writeText(texto).then(() => {
+        alert("Texto copiado al portapapeles 📋");
+      }).catch(err => {
+        alert("Error al copiar: " + err);
+      });
+    }
 
-        function copiarTicket() {
-          const texto = document.getElementById("external_ticket").value;
-          navigator.clipboard.writeText(texto).then(() => {
-            mostrarToast("External Ticket copiado 📋");
-          }).catch(err => {
-            alert("Error al copiar ticket: " + err);
-          });
-        }
+    function copiarTicket() {
+      const texto = document.getElementById("external_ticket").value;
+      navigator.clipboard.writeText(texto).then(() => {
+        mostrarToast("External Ticket copiado 📋");
+      }).catch(err => {
+        alert("Error al copiar ticket: " + err);
+      });
+    }
 
-        document.getElementById("descripcion_solucion").addEventListener("input", function () {
+    document.getElementById("descripcion_solucion").addEventListener("input", function () {
       const textoIngresado = this.value;
       const textoMejorado = mejorarTextoDescripcion(textoIngresado);
       document.getElementById("descripcion_mejorada").value = textoMejorado;
@@ -561,7 +593,7 @@
       }, 3500);
     }
 
-    
+
     function limpiarCampos() {
       const campos = document.querySelectorAll("#formulario input, #formulario select, #formulario textarea");
       campos.forEach(campo => {
@@ -579,7 +611,7 @@
     function validarAgrupador() {
       const valorIngresado = inputAgrupador.value.trim();
       const esValido = opcionesAgrupador.includes(valorIngresado);
-        
+
       if (!esValido && valorIngresado !== "") {
         Swal.fire({
           icon: 'warning',
@@ -590,16 +622,17 @@
           inputAgrupador.value = "";
           inputAgrupador.focus();
         });
-    
+
         return false;
       }
-  
+
       return true;
     }
 
   </script>
 
-    <div id="toast" class="toast"></div>
+  <div id="toast" class="toast"></div>
 
 </body>
+
 </html>
